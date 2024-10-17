@@ -1,0 +1,35 @@
+Phase 0: Let's Run Some Containers
+
+docker container run --name my_nginx -p 80:80 -d nginx
+  curl localhost:80
+
+docker container run --name my_httpd -p 8080:80 -d httpd
+  curl localhost:8080
+
+docker container run --name my_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
+  docker container inspect mysql
+
+docker container stop my_nginx my_httpd my_mysql
+docker container prune
+
+
+Phase 1: The Shell Within
+docker container run -it --name web nginx bash
+    ls
+    exit
+
+  docker container start web
+
+  docker container exec -it web bash
+
+  docker container stop web
+
+docker container run --name my_ubuntu -d -t ubuntu
+
+  docker exec -it ubuntu bash
+
+  apt-get update
+
+  curl parrot.live
+
+  docker container stop my_ubuntu
