@@ -35,7 +35,7 @@ WORKDIR /usr/share/nginx/html
 #   The build directory was created inside the app directory in the
 #   build-stage. The files inside that folder can be put directly into
 #   the html folder that you just set as your working directory
-COPY /app /usr/share/nginx/html
+COPY --from=build-stage /app/ /usr/share/nginx/html
 
 # Step 10: Replace the default NGINX config with the application's version
 #    The absolute path to the default NGINX config file is
